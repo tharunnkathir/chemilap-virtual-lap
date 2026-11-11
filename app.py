@@ -1,110 +1,32 @@
-elif page == "Chemistry Quiz":
+import streamlit as st
 
-    st.title("📝 Chemistry Knowledge Quiz")
+# Set page configuration (optional, but recommended)
+st.set_page_config(page_title="ChemiLap Virtual Lab", layout="wide")
 
-    questions = [
-        {
-            "question": "What is the chemical formula of water?",
-            "options": ["CO2", "H2O", "O2", "CH4"],
-            "answer": "H2O"
-        },
-        {
-            "question": "What is the molecular formula of benzene?",
-            "options": ["C6H6", "CH4", "C2H6O", "H2O"],
-            "answer": "C6H6"
-        },
-        {
-            "question": "Which compound is commonly found in vinegar?",
-            "options": ["Methane", "Benzene", "Acetic Acid", "Glucose"],
-            "answer": "Acetic Acid"
-        },
-        {
-            "question": "What does SMILES represent?",
-            "options": [
-                "A programming language",
-                "A molecular representation system",
-                "A chemical element",
-                "A laboratory instrument"
-            ],
-            "answer": "A molecular representation system"
-        },
-        {
-            "question": "What is the chemical formula of methane?",
-            "options": ["CH4", "CO2", "C6H6", "H2O"],
-            "answer": "CH4"
-        },
-        {
-            "question": "Which element is represented by the symbol O?",
-            "options": ["Gold", "Oxygen", "Silver", "Iron"],
-            "answer": "Oxygen"
-        },
-        {
-            "question": "What is the molecular formula of glucose?",
-            "options": ["C6H12O6", "H2O", "CH4", "C6H6"],
-            "answer": "C6H12O6"
-        },
-        {
-            "question": "Which software library is used for cheminformatics in this project?",
-            "options": ["NumPy", "RDKit", "Matplotlib", "Flask"],
-            "answer": "RDKit"
-        },
-        {
-            "question": "What does molecular weight measure?",
-            "options": [
-                "Molecular mass",
-                "Temperature",
-                "Pressure",
-                "Volume"
-            ],
-            "answer": "Molecular mass"
-        },
-        {
-            "question": "What is the formula of ethanol?",
-            "options": ["C2H6O", "C6H6", "CH4", "CO2"],
-            "answer": "C2H6O"
-        }
-    ]
+# Sidebar navigation menu
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Chemistry Quiz", "Virtual Lab", "About"])
 
-    with st.form("quiz_form"):
-
-        answers = []
-
-        for i, q in enumerate(questions):
-
-            st.write(f"**Q{i+1}. {q['question']}**")
-
-            answer = st.radio(
-                "Choose your answer:",
-                q["options"],
-                key=f"question_{i}"
-            )
-
-            answers.append(answer)
-
-        submitted = st.form_submit_button("Submit Quiz")
-
-    if submitted:
-
-        score = sum(
-            answers[i] == questions[i]["answer"]
-            for i in range(len(questions))
-        )
-
-        st.success(f"Your Score: {score}/10")
-
-        if score >= 8:
-            st.balloons()
-            st.write("Excellent work!")
-
-        elif score >= 5:
-            st.write("Good effort! Keep learning.")
-
+# 1. The FIRST condition must ALWAYS start with 'if'
+if page == "Chemistry Quiz":
+    st.title("🧪 Chemistry Quiz")
+    st.write("Welcome to the quiz section!")
+    
+    # Add your quiz code here
+    answer = st.radio("What is the chemical symbol for Water?", ["H2O", "CO2", "O2"])
+    if st.button("Submit Answer"):
+        if answer == "H2O":
+            st.success("Correct! 🎉")
         else:
-            st.write("Keep practising and try again.")
+            st.error("Incorrect, try again.")
 
-        with st.expander("View Correct Answers"):
+# 2. Subsequent conditions use 'elif'
+elif page == "Virtual Lab":
+    st.title("🔬 Virtual Lab")
+    st.write("Perform your chemical experiments here.")
+    
+    # Add your virtual lab code here
 
-            for i, q in enumerate(questions):
-                st.write(
-                    f"Q{i+1}: Correct Answer: {q['answer']}"
-                )
+elif page == "About":
+    st.title("ℹ️ About ChemiLap")
+    st.write("This app is designed to help students learn chemistry interactively.")

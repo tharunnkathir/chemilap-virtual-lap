@@ -32,94 +32,109 @@ h1 {
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- EXPANDED COMPOUND DATABASE ----------------
+# ---------------- 100 COMPOUNDS DATABASE ----------------
 
 COMPOUNDS = {
-    "Water": {
-        "smiles": "O",
-        "formula": "H2O",
-        "uses": "Drinking, cleaning and biological processes."
-    },
-    "Methane": {
-        "smiles": "C",
-        "formula": "CH4",
-        "uses": "Used as a fuel and natural gas component."
-    },
-    "Ethanol": {
-        "smiles": "CCO",
-        "formula": "C2H6O",
-        "uses": "Used in sanitizers, solvents and fuels."
-    },
-    "Glucose": {
-        "smiles": "C(C1C(C(C(C(O1)O)O)O)O)O",
-        "formula": "C6H12O6",
-        "uses": "An important energy source for living organisms."
-    },
-    "Benzene": {
-        "smiles": "c1ccccc1",
-        "formula": "C6H6",
-        "uses": "Used as an industrial chemical starting material."
-    },
-    "Acetic Acid": {
-        "smiles": "CC(=O)O",
-        "formula": "C2H4O2",
-        "uses": "Main acid present in vinegar."
-    },
-    "Aspirin": {
-        "smiles": "CC(=O)Oc1ccccc1C(=O)O",
-        "formula": "C9H8O4",
-        "uses": "A medicine used for pain and fever relief."
-    },
-    "Acetone": {
-        "smiles": "CC(=O)C",
-        "formula": "C3H6O",
-        "uses": "Common solvent used in nail polish remover and cleaning."
-    },
-    "Caffeine": {
-        "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
-        "formula": "C8H10N4O2",
-        "uses": "Central nervous system stimulant found in coffee and tea."
-    },
-    "Paracetamol": {
-        "smiles": "CC(=O)NC1=CC=C(C=C1)O",
-        "formula": "C8H9NO2",
-        "uses": "Common pain reliever and fever reducer."
-    },
-    "Ibuprofen": {
-        "smiles": "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",
-        "formula": "C13H18O2",
-        "uses": "Nonsteroidal anti-inflammatory drug (NSAID)."
-    },
-    "Cholesterol": {
-        "smiles": "CC(C)CCCC(C)C1CCC2C1(CCC3C2CC=C4C3(CCC(C4)O)C)C",
-        "formula": "C27H46O",
-        "uses": "Vital lipid component found in cell membranes."
-    },
-    "Penicillin G": {
-        "smiles": "CC1(C(N2C1(C(S2)NC(=O)CC3=CC=CC=C3)C(=O)O)C(=O)O)C",
-        "formula": "C16H18N2O4S",
-        "uses": "Antibiotic medication used to treat bacterial infections."
-    },
-    "Urea": {
-        "smiles": "NC(=O)N",
-        "formula": "CH4N2O",
-        "uses": "Used in fertilizers and nitrogen excretion in animals."
-    },
-    "Formaldehyde": {
-        "smiles": "C=O",
-        "formula": "CH2O",
-        "uses": "Disinfectant, preservative, and chemical precursor."
-    },
-    "Ammonia": {
-        "smiles": "N",
-        "formula": "NH3",
-        "uses": "Used in agricultural fertilizers and cleaning products."
-    },
-    "Carbon Dioxide": {
-        "smiles": "O=C=O",
-        "formula": "CO2",
-        "uses": "Greenhouse gas, carbonation in drinks, and fire extinguishers."
-    }
+    "Water": {"smiles": "O", "formula": "H2O", "uses": "Drinking, cleaning and biological processes."},
+    "Methane": {"smiles": "C", "formula": "CH4", "uses": "Used as a fuel and natural gas component."},
+    "Ethanol": {"smiles": "CCO", "formula": "C2H6O", "uses": "Used in sanitizers, solvents and fuels."},
+    "Glucose": {"smiles": "C(C1C(C(C(C(O1)O)O)O)O)O", "formula": "C6H12O6", "uses": "An important energy source for living organisms."},
+    "Benzene": {"smiles": "c1ccccc1", "formula": "C6H6", "uses": "Used as an industrial chemical starting material."},
+    "Acetic Acid": {"smiles": "CC(=O)O", "formula": "C2H4O2", "uses": "Main acid present in vinegar."},
+    "Aspirin": {"smiles": "CC(=O)Oc1ccccc1C(=O)O", "formula": "C9H8O4", "uses": "A medicine used for pain and fever relief."},
+    "Acetone": {"smiles": "CC(=O)C", "formula": "C3H6O", "uses": "Common solvent used in nail polish remover."},
+    "Caffeine": {"smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C", "formula": "C8H10N4O2", "uses": "Central nervous system stimulant found in coffee and tea."},
+    "Paracetamol": {"smiles": "CC(=O)NC1=CC=C(C=C1)O", "formula": "C8H9NO2", "uses": "Common pain reliever and fever reducer."},
+    "Ibuprofen": {"smiles": "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O", "formula": "C13H18O2", "uses": "Nonsteroidal anti-inflammatory drug (NSAID)."},
+    "Cholesterol": {"smiles": "CC(C)CCCC(C)C1CCC2C1(CCC3C2CC=C4C3(CCC(C4)O)C)C", "formula": "C27H46O", "uses": "Vital lipid component found in cell membranes."},
+    "Penicillin G": {"smiles": "CC1(C(N2C1(C(S2)NC(=O)CC3=CC=CC=C3)C(=O)O)C(=O)O)C", "formula": "C16H18N2O4S", "uses": "Antibiotic medication used to treat bacterial infections."},
+    "Urea": {"smiles": "NC(=O)N", "formula": "CH4N2O", "uses": "Used in fertilizers and nitrogen excretion in animals."},
+    "Formaldehyde": {"smiles": "C=O", "formula": "CH2O", "uses": "Disinfectant, preservative, and chemical precursor."},
+    "Ammonia": {"smiles": "N", "formula": "NH3", "uses": "Used in agricultural fertilizers and cleaning products."},
+    "Carbon Dioxide": {"smiles": "O=C=O", "formula": "CO2", "uses": "Greenhouse gas, carbonation in drinks, and fire extinguishers."},
+    "Hydrogen Peroxide": {"smiles": "OO", "formula": "H2O2", "uses": "Antiseptic, bleaching agent, and oxidizing agent."},
+    "Sulfuric Acid": {"smiles": "OS(=O)(=O)O", "formula": "H2SO4", "uses": "Used in car batteries, manufacturing, and chemical synthesis."},
+    "Hydrochloric Acid": {"smiles": "Cl", "formula": "HCl", "uses": "Stomach acid, metal cleaning, and chemical processing."},
+    "Sodium Chloride": {"smiles": "[Na+].[Cl-]", "formula": "NaCl", "uses": "Table salt used for seasoning and preservation."},
+    "Sodium Hydroxide": {"smiles": "[Na+].[OH-]", "formula": "NaOH", "uses": "Used in soap making, drain cleaners, and paper production."},
+    "Methanol": {"smiles": "CO", "formula": "CH4O", "uses": "Solvent, fuel, and antifreeze component."},
+    "Isopropanol": {"smiles": "CC(C)O", "formula": "C3H8O", "uses": "Rubbing alcohol and electronic contact cleaner."},
+    "Diethyl Ether": {"smiles": "CCOCC", "formula": "C4H10O", "uses": "Historical anesthetic and laboratory solvent."},
+    "Chloroform": {"smiles": "C(Cl)(Cl)Cl", "formula": "CHCl3", "uses": "Historical solvent and reagent in organic chemistry."},
+    "Toluene": {"smiles": "Cc1ccccc1", "formula": "C7H8", "uses": "Solvent in paints, thinners, and chemical manufacturing."},
+    "Phenol": {"smiles": "Oc1ccccc1", "formula": "C6H6O", "uses": "Used in antiseptics and production of resins/plastics."},
+    "Aniline": {"smiles": "Nc1ccccc1", "formula": "C6H7N", "uses": "Precursor to dyes, rubber chemicals, and pharmaceuticals."},
+    "Benzoic Acid": {"smiles": "O=C(O)c1ccccc1", "formula": "C7H6O2", "uses": "Food preservative and precursor to chemical synthesis."},
+    "Citric Acid": {"smiles": "OC(=O)CC(O)(CC(=O)O)C(=O)O", "formula": "C6H8O7", "uses": "Flavor enhancer and preservative in food and beverages."},
+    "Lactic Acid": {"smiles": "CC(O)C(=O)O", "formula": "C3H6O3", "uses": "Found in yogurt, muscle metabolism, and cosmetics."},
+    "Ascorbic Acid (Vitamin C)": {"smiles": "C(C1C(C(=C(O1)O)O)=O)O", "formula": "C6H8O6", "uses": "Essential vitamin acting as an antioxidant."},
+    "Glycine": {"smiles": "NCC(=O)O", "formula": "C2H5NO2", "uses": "Simplest amino acid found in proteins."},
+    "Alanine": {"smiles": "CC(N)C(=O)O", "formula": "C3H7NO2", "uses": "Amino acid used in protein biosynthesis."},
+    "Glycerol": {"smiles": "C(C(CO)O)O", "formula": "C3H8O3", "uses": "Humectant, sweetener, and pharmaceutical ingredient."},
+    "Propane": {"smiles": "CCC", "formula": "C3H8", "uses": "Fuel for heating and cooking."},
+    "Butane": {"smiles": "CCCC", "formula": "C4H10", "uses": "Lighter fluid and portable stove fuel."},
+    "Pentane": {"smiles": "CCCCC", "formula": "C5H12", "uses": "Laboratory solvent and blowing agent."},
+    "Hexane": {"smiles": "CCCCCC", "formula": "C6H14", "uses": "Extraction solvent for vegetable oils."},
+    "Heptane": {"smiles": "CCCCCCC", "formula": "C7H16", "uses": "Solvent and calibration standard for octane rating."},
+    "Octane": {"smiles": "CCCCCCCC", "formula": "C8H18", "uses": "Component of gasoline."},
+    "Ethylene": {"smiles": "C=C", "formula": "C2H4", "uses": "Plant hormone and polymer manufacturing."},
+    "Acetylene": {"smiles": "C#C", "formula": "C2H2", "uses": "Welding fuel and chemical feedstock."},
+    "Propylene": {"smiles": "CC=C", "formula": "C3H6", "uses": "Used to manufacture polypropylene plastic."},
+    "1-Butene": {"smiles": "CCC=C", "formula": "C4H8", "uses": "Comonomer in polyethylene production."},
+    "Isoprene": {"smiles": "CC(=C)C=C", "formula": "C5H8", "uses": "Monomer for synthetic rubber production."},
+    "Styrene": {"smiles": "C=Cc1ccccc1", "formula": "C8H8", "uses": "Used to produce polystyrene plastics and resins."},
+    "Naphthalene": {"smiles": "c1ccc2ccccc2c1", "formula": "C10H8", "uses": "Mothballs and chemical synthesis precursor."},
+    "Anthracene": {"smiles": "c1ccc2cc3ccccc3cc2c1", "formula": "C14H10", "uses": "Dyes and scintillation counter materials."},
+    "Pyridine": {"smiles": "c1cc[nH]c1", "formula": "C5H5N", "uses": "Basic heterocyclic organic solvent and reagent."},
+    "Pyrrole": {"smiles": "C1=CC=CN1", "formula": "C4H5N", "uses": "Precursor to pharmaceuticals and conducting polymers."},
+    "Furan": {"smiles": "C1=CC=CO1", "formula": "C4H4O", "uses": "Solvent and chemical intermediate."},
+    "Thiophene": {"smiles": "C1=CC=CS1", "formula": "C4H4S", "uses": "Used in specialty chemical manufacturing."},
+    "Imidazole": {"smiles": "C1=CN=CN1", "formula": "C3H4N2", "uses": "Precursor to antifungal medications and ionic liquids."},
+    "Oxazole": {"smiles": "C1=NC=CO1", "formula": "C3H3NO", "uses": "Organic synthesis and pharmaceuticals."},
+    "Thiazole": {"smiles": "C1=NC=CS1", "formula": "C3H3NS", "uses": "Vitamin B1 synthesis and agrochemicals."},
+    "Purine": {"smiles": "c1[nH]c2ncnc2[nH]1", "formula": "C5H4N4", "uses": "Base structure of DNA/RNA nucleobases."},
+    "Pyrimidine": {"smiles": "c1cncnc1", "formula": "C4H4N2", "uses": "Found in nucleic acids and pharmaceuticals."},
+    "Indole": {"smiles": "c1ccc2c(c1)[nH]cc2", "formula": "C8H7N", "uses": "Fragrances and biochemical precursor (tryptophan)."},
+    "Quinoline": {"smiles": "c1ccc2c(c1)nccc2", "formula": "C9H7N", "uses": "Manufacture of antimalarial drugs."},
+    "Isoquinoline": {"smiles": "c1ccc2c(c1)cncc2", "formula": "C9H7N", "uses": "Pharmaceutical and alkaloid synthesis."},
+    "Acridine": {"smiles": "c1ccc2cc3ccccc3nc2c1", "formula": "C13H9N", "uses": "Dyes and antiseptic agents."},
+    "Carbazole": {"smiles": "c1ccc2c(c1)[nH]c3ccccc23", "formula": "C12H9N", "uses": "Photographic plates and pigments."},
+    "Dioxane": {"smiles": "C1COCCO1", "formula": "C4H8O2", "uses": "Stable polar aprotic solvent."},
+    "Tetrahydrofuran": {"smiles": "C1CCOC1", "formula": "C4H8O", "uses": "Important polar ether solvent (THF)."},
+    "Acetonitrile": {"smiles": "CC#N", "formula": "C2H3N", "uses": "Common solvent in HPLC chromatography."},
+    "Nitromethane": {"smiles": "C[N+](=O)[O-]", "formula": "CH3NO2", "uses": "Fuel additive and organic solvent."},
+    "Carbon Tetrachloride": {"smiles": "C(Cl)(Cl)(Cl)Cl", "formula": "CCl4", "uses": "Historical refrigerant and cleaning solvent."},
+    "Dichloromethane": {"smiles": "C(Cl)Cl", "formula": "CH2Cl2", "uses": "Laboratory extraction and paint stripping solvent."},
+    "1,2-Dichloroethane": {"smiles": "C(Cl)CCl", "formula": "C2H4Cl2", "uses": "Precursor to vinyl chloride production."},
+    "Trichloroethylene": {"smiles": "C(=C(Cl)Cl)Cl", "formula": "C2HCl3", "uses": "Industrial metal degreasing solvent."},
+    "Tetrachloroethylene": {"smiles": "C(=C(Cl)Cl)(Cl)Cl", "formula": "C2Cl4", "uses": "Dry cleaning solvent."},
+    "Fluorobenzene": {"smiles": "c1ccc(cc1)F", "formula": "C6H5F", "uses": "Pharmaceutical intermediate."},
+    "Chlorobenzene": {"smiles": "c1ccc(cc1)Cl", "formula": "C6H5Cl", "uses": "Solvent and intermediate for pesticides/dyes."},
+    "Bromobenzene": {"smiles": "c1ccc(cc1)Br", "formula": "C6H5Br", "uses": "Organic synthesis reagent."},
+    "Iodobenzene": {"smiles": "c1ccc(cc1)I", "formula": "C6H5I", "uses": "Reagent for aryl-aryl coupling reactions."},
+    "Nitrobenzene": {"smiles": "c1ccc(cc1)[N+](=O)[O-]", "formula": "C6H5NO2", "uses": "Production of aniline and lubricants."},
+    "Benzaldehyde": {"smiles": "O=Cc1ccccc1", "formula": "C7H6O", "uses": "Almond scent flavoring and chemical precursor."},
+    "Acetophenone": {"smiles": "CC(=O)c1ccccc1", "formula": "C8H8O", "uses": "Fragrance and solvent for plastics."},
+    "Benzophenone": {"smiles": "O=C(c1ccccc1)c2ccccc2", "formula": "C13H10O", "uses": "UV curing agent and sunscreen ingredient."},
+    "Salicylic Acid": {"smiles": "O=C(O)c1ccccc1O", "formula": "C7H6O3", "uses": "Skincare treatments and aspirin precursor."},
+    "Phthalic Acid": {"smiles": "O=C(O)c1ccccc1C(=O)O", "formula": "C8H6O4", "uses": "Precursor to plasticizers and polyesters."},
+    "Terephthalic Acid": {"smiles": "O=C(O)c1ccc(cc1)C(=O)O", "formula": "C8H6O4", "uses": "Production of PET polyester plastics."},
+    "Oxalic Acid": {"smiles": "OC(=O)C(=O)O", "formula": "C2H2O4", "uses": "Rust remover and bleaching agent."},
+    "Malonic Acid": {"smiles": "OC(=O)CC(=O)O", "formula": "C3H4O4", "uses": "Organic synthesis building block."},
+    "Succinic Acid": {"smiles": "OC(=O)CCC(=O)O", "formula": "C4H6O4", "uses": "Metabolic intermediate and food additive."},
+    "Adipic Acid": {"smiles": "OC(=O)CCCCC(=O)O", "formula": "C6H10O4", "uses": "Nylon polymer manufacturing."},
+    "Fumaric Acid": {"smiles": "OC(=O)C=CC(=O)O", "formula": "C4H4O4", "uses": "Food acidulant and biochemical intermediate."},
+    "Maleic Acid": {"smiles": "OC(=O)C=CC(=O)O", "formula": "C4H4O4", "uses": "Resin and coating manufacturing."},
+    "Tartaric Acid": {"smiles": "OC(=O)C(O)C(O)C(=O)O", "formula": "C4H6O6", "uses": "Baking powder component and wine industry."},
+    "Valeric Acid": {"smiles": "CCCCC(=O)O", "formula": "C5H10O2", "uses": "Ester production for fragrances."},
+    "Caproic Acid": {"smiles": "CCCCCC(=O)O", "formula": "C6H12O2", "uses": "Flavoring agents and chemical synthesis."},
+    "Palmitic Acid": {"smiles": "CCCCCCCCCCCCCCCC(=O)O", "formula": "C16H32O2", "uses": "Common saturated fatty acid in animals and plants."},
+    "Stearic Acid": {"smiles": "CCCCCCCCCCCCCCCCCC(=O)O", "formula": "C18H36O2", "uses": "Candle making, soaps, and lubricants."},
+    "Oleic Acid": {"smiles": "CCCCCCCC\\C=C/CCCCCCCC(=O)O", "formula": "C18H34O2", "uses": "Monounsaturated fatty acid found in olive oil."},
+    "Linoleic Acid": {"smiles": "CCCCC\\C=C/C\\C=C/CCCCCCCC(=O)O", "formula": "C18H32O2", "uses": "Essential polyunsaturated omega-6 fatty acid."},
+    "Uric Acid": {"smiles": "O=C1NC(=O)C2=C(N1)NC(=N2)NC3=O", "formula": "C5H4N4O3", "uses": "Metabolic breakdown product of purine nucleotides."},
+    "Allantoin": {"smiles": "NC(=O)NC1NC(=O)NC1=O", "formula": "C4H6N4O3", "uses": "Skin soothing agent in cosmetics."},
+    "Melamine": {"smiles": "NC1=NC(=NC(=N1)N)N", "formula": "C3H6N6", "uses": "Manufacture of laminates, plastics, and glues."}
 }
 
 # ---------------- FUNCTIONS ----------------
@@ -238,7 +253,7 @@ if page == "Dashboard":
     st.subheader("What can you explore?")
 
     st.markdown("""
-    - Chemical compound information & SMILES database
+    - Comprehensive Chemical compound database (100 compounds)
     - Molecular weight & property calculations
     - 2D Molecular structure visualization
     - Functional group identification

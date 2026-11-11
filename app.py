@@ -32,7 +32,7 @@ h1 {
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- COMPOUND DATABASE ----------------
+# ---------------- EXPANDED COMPOUND DATABASE ----------------
 
 COMPOUNDS = {
     "Water": {
@@ -69,6 +69,56 @@ COMPOUNDS = {
         "smiles": "CC(=O)Oc1ccccc1C(=O)O",
         "formula": "C9H8O4",
         "uses": "A medicine used for pain and fever relief."
+    },
+    "Acetone": {
+        "smiles": "CC(=O)C",
+        "formula": "C3H6O",
+        "uses": "Common solvent used in nail polish remover and cleaning."
+    },
+    "Caffeine": {
+        "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+        "formula": "C8H10N4O2",
+        "uses": "Central nervous system stimulant found in coffee and tea."
+    },
+    "Paracetamol": {
+        "smiles": "CC(=O)NC1=CC=C(C=C1)O",
+        "formula": "C8H9NO2",
+        "uses": "Common pain reliever and fever reducer."
+    },
+    "Ibuprofen": {
+        "smiles": "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",
+        "formula": "C13H18O2",
+        "uses": "Nonsteroidal anti-inflammatory drug (NSAID)."
+    },
+    "Cholesterol": {
+        "smiles": "CC(C)CCCC(C)C1CCC2C1(CCC3C2CC=C4C3(CCC(C4)O)C)C",
+        "formula": "C27H46O",
+        "uses": "Vital lipid component found in cell membranes."
+    },
+    "Penicillin G": {
+        "smiles": "CC1(C(N2C1(C(S2)NC(=O)CC3=CC=CC=C3)C(=O)O)C(=O)O)C",
+        "formula": "C16H18N2O4S",
+        "uses": "Antibiotic medication used to treat bacterial infections."
+    },
+    "Urea": {
+        "smiles": "NC(=O)N",
+        "formula": "CH4N2O",
+        "uses": "Used in fertilizers and nitrogen excretion in animals."
+    },
+    "Formaldehyde": {
+        "smiles": "C=O",
+        "formula": "CH2O",
+        "uses": "Disinfectant, preservative, and chemical precursor."
+    },
+    "Ammonia": {
+        "smiles": "N",
+        "formula": "NH3",
+        "uses": "Used in agricultural fertilizers and cleaning products."
+    },
+    "Carbon Dioxide": {
+        "smiles": "O=C=O",
+        "formula": "CO2",
+        "uses": "Greenhouse gas, carbonation in drinks, and fire extinguishers."
     }
 }
 
@@ -188,13 +238,13 @@ if page == "Dashboard":
     st.subheader("What can you explore?")
 
     st.markdown("""
-    - Chemical compound information
-    - Molecular weight calculation
-    - Molecular structure visualization
+    - Chemical compound information & SMILES database
+    - Molecular weight & property calculations
+    - 2D Molecular structure visualization
     - Functional group identification
-    - Compound comparison
+    - Compound comparison tools
     - Full Interactive Periodic Table (Elements 1–118)
-    - Chemistry knowledge quiz
+    - Chemistry knowledge quiz & PDF report generator
     """)
 
     st.info("Select a module from the sidebar to begin your experiment.")
@@ -398,12 +448,10 @@ elif page == "Periodic Table":
 
     ptable = Chem.GetPeriodicTable()
 
-    # Generate full elements list from atomic number 1 to 118
     all_elements = []
     for atomic_num in range(1, 119):
         try:
             symbol = ptable.GetElementSymbol(atomic_num)
-            name = ptable.GetElementModality(atomic_num) if hasattr(ptable, 'GetElementModality') else symbol
             weight = ptable.GetAtomicWeight(atomic_num)
             all_elements.append({
                 "Atomic Number": atomic_num,
@@ -420,7 +468,6 @@ elif page == "Periodic Table":
         df_elements["Symbol"] + " (Z=" + df_elements["Atomic Number"].astype(str) + ")"
     )
 
-    # Extract atomic number from selection
     selected_num = int(selected_symbol.split("(Z=")[1].replace(")", ""))
     elem_row = df_elements[df_elements["Atomic Number"] == selected_num].iloc[0]
 

@@ -181,7 +181,7 @@ if page == "Dashboard":
 
     col1.metric("Available Compounds", len(COMPOUNDS))
     col2.metric("Virtual Experiments", 4)
-    col3.metric("Learning Modules", 6)
+    col3.metric("Periodic Table Elements", "118")
 
     st.divider()
 
@@ -193,7 +193,7 @@ if page == "Dashboard":
     - Molecular structure visualization
     - Functional group identification
     - Compound comparison
-    - Interactive Periodic Table
+    - Full Interactive Periodic Table (Elements 1–118)
     - Chemistry knowledge quiz
     """)
 
@@ -387,47 +387,50 @@ elif page == "Virtual Experiments":
 
             st.plotly_chart(fig, use_container_width=True)
 
-# ---------------- PERIODIC TABLE MODULE ----------------
+# ---------------- PERIODIC TABLE MODULE (ALL 118 ELEMENTS) ----------------
 
 elif page == "Periodic Table":
 
-    st.title("📊 Interactive Periodic Table")
+    st.title("📊 Interactive Periodic Table (1–118 Elements)")
     st.write(
-        "Select an element below to explore its atomic properties, "
-        "electronic configuration, and common uses."
+        "Explore all standard chemical elements using RDKit's built-in periodic table data."
     )
 
-    ELEMENTS_DATA = {
-        "Hydrogen": {"symbol": "H", "number": 1, "mass": "1.008", "category": "Reactive Nonmetal", "config": "1s¹", "uses": "Ammonia production, rocket fuel, and hydrogenation."},
-        "Helium": {"symbol": "He", "number": 2, "mass": "4.003", "category": "Noble Gas", "config": "1s²", "uses": "Balloon inflation, cryogenics, and deep-sea diving gas."},
-        "Carbon": {"symbol": "C", "number": 6, "mass": "12.011", "category": "Reactive Nonmetal", "config": "[He] 2s² 2p²", "uses": "Organic chemistry, steel production, and carbon dating."},
-        "Nitrogen": {"symbol": "N", "number": 7, "mass": "14.007", "category": "Reactive Nonmetal", "config": "[He] 2s² 2p³", "uses": "Fertilizers, explosives, and cryogenic preservation."},
-        "Oxygen": {"symbol": "O", "number": 8, "mass": "15.999", "category": "Reactive Nonmetal", "config": "[He] 2s² 2p⁴", "uses": "Respiration, steelmaking, and medical oxygen therapy."},
-        "Sodium": {"symbol": "Na", "number": 11, "mass": "22.990", "category": "Alkali Metal", "config": "[Ne] 3s¹", "uses": "Street lights, chemical synthesis, and table salt."},
-        "Chlorine": {"symbol": "Cl", "number": 17, "mass": "35.45", "category": "Halogen", "config": "[Ne] 3s² 3p⁵", "uses": "Water disinfection, bleaching, and PVC manufacturing."},
-        "Gold": {"symbol": "Au", "number": 79, "mass": "196.97", "category": "Transition Metal", "config": "[Xe] 4f¹⁴ 5d¹⁰ 6s¹", "uses": "Jewelry, electronics, and monetary reserves."}
-    }
+    ptable = Chem.GetPeriodicTable()
 
-    selected_element = st.selectbox(
-        "Select an Element", 
-        list(ELEMENTS_DATA.keys())
+    # Generate full elements list from atomic number 1 to 118
+    all_elements = []
+    for atomic_num in range(1, 119):
+        try:
+            symbol = ptable.GetElementSymbol(atomic_num)
+            name = ptable.GetElementModality(atomic_num) if hasattr(ptable, 'GetElementModality') else symbol
+            weight = ptable.GetAtomicWeight(atomic_num)
+            all_elements.append({
+                "Atomic Number": atomic_num,
+                "Symbol": symbol,
+                "Atomic Weight": round(weight, 4)
+            })
+        except Exception:
+            pass
+
+    df_elements = pd.DataFrame(all_elements)
+
+    selected_symbol = st.selectbox(
+        "Search or Select Element by Symbol / Atomic Number",
+        df_elements["Symbol"] + " (Z=" + df_elements["Atomic Number"].astype(str) + ")"
     )
 
-    data = ELEMENTS_DATA[selected_element]
+    # Extract atomic number from selection
+    selected_num = int(selected_symbol.split("(Z=")[1].replace(")", ""))
+    elem_row = df_elements[df_elements["Atomic Number"] == selected_num].iloc[0]
 
     col1, col2, col3 = st.columns(3)
+    col1.metric("Atomic Number", int(elem_row["Atomic Number"]))
+    col2.metric("Chemical Symbol", elem_row["Symbol"])
+    col3.metric("Atomic Weight", f"{elem_row['Atomic Weight']} u")
 
-    col1.metric("Atomic Number", data["number"])
-    col2.metric("Chemical Symbol", data["symbol"])
-    col3.metric("Atomic Mass", f"{data['mass']} u")
-
-    st.subheader(f"Detailed Properties of {selected_element}")
-    
-    st.markdown(f"""
-    - **Category:** {data['category']}
-    - **Electron Configuration:** `{data['config']}`
-    - **Common Uses:** {data['uses']}
-    """)
+    st.subheader("Complete Periodic Elements Database")
+    st.dataframe(df_elements, use_container_width=True)
 
 # ---------------- CHEMISTRY QUIZ ----------------
 
